@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Final') {
       steps {
-        sh 'curl 127.0.0.1'
+        sh 'curl -i 127.0.0.1:8080'
       }
     }
   }
