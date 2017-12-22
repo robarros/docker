@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Final') {
       steps {
-        sh 'ping 8.8.8.8'
+        sh 'curl 127.0.0.1'
       }
     }
   }
