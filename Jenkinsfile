@@ -11,5 +11,10 @@ pipeline {
         sh 'echo "ronaldo"'
       }
     }
+    stage('Final') {
+      steps {
+        sh 'ping 8.8.8.8'
+      }
+    }
   }
 }
