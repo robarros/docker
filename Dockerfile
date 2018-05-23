@@ -1,4 +1,4 @@
-FROM nginx:stable-alpine
+FROM nginx:alpine
 MAINTAINER Ronaldo Barros
 COPY web/ /usr/share/nginx/html
 EXPOSE 80
