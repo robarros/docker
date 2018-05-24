@@ -8,7 +8,7 @@ ENV NJS_VERSION   1.13.12.0.2.0-1~stretch
 RUN set -x \
 	&& apt-get update \
 	&& apt-get install --no-install-recommends --no-install-suggests -y gnupg1 apt-transport-https ca-certificates \
-	unzip wget && \
+	&& \
 	NGINX_GPGKEY=573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62; \
 	found=''; \
 	for server in \
@@ -79,7 +79,7 @@ RUN set -x \
 	\
 	&& apt-get install --no-install-recommends --no-install-suggests -y \
 						$nginxPackages \
-						gettext-base \c
+						gettext-base \
 	&& apt-get remove --purge --auto-remove -y apt-transport-https ca-certificates && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/nginx.list \
 	\
 # if we have leftovers from building, let's purge them (including extra, unnecessary build deps)
@@ -91,9 +91,6 @@ RUN set -x \
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
-
-RUN cd /tmp && wget https://www.html5webtemplates.co.uk/downloads/black_white.zip && unzip black_white.zip web \
-    && cp -R -f /tmp/webblack_white/* /usr/share/nginx/html
 
 EXPOSE 80
 
