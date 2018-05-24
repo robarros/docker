@@ -92,6 +92,9 @@ RUN set -x \
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
+RUN cd /tmp && wget https://www.html5webtemplates.co.uk/downloads/black_white.zip && unzip black_white.zip web \
+    && cp -R -f /tmp/webblack_white/* /usr/share/nginx/html
+
 EXPOSE 80
 
 STOPSIGNAL SIGTERM
