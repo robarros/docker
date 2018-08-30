@@ -3,6 +3,7 @@ pipeline {
     stages {
       stage('Code') {
         steps {
+          deleteDir()
           sh 'hostname'
           git 'https://github.com/robarros/docker.git'
           sh 'ls -lha'
