@@ -1,7 +1,6 @@
 FROM nginx:alpine
 
 LABEL maintainer="Ronaldo Barros" \
-      version=$BUILD_NUMBER
 
 RUN apk add --update unzip curl
 
