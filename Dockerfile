@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-LABEL maintainer="Ronaldo Barros" \
+LABEL maintainer="Ronaldo Barros"
 
 RUN apk add --update unzip curl
 
