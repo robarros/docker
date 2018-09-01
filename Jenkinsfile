@@ -18,7 +18,7 @@ pipeline {
           
       }
 
-      stage('Test Unit') {
+      stage('Test Unit Contauner') {
         steps {
           sh 'docker inspect 10.0.0.111:5000/web01:$BUILD_NUMBER'
           sh 'docker inspect 10.0.0.111:5000/web01:latest'
@@ -29,10 +29,16 @@ pipeline {
         steps {          
           sh 'docker rm -f portal || echo "removido container portal"'
           sh 'docker container run -d -p 80:80 --name portal 10.0.0.111:5000/web01:$BUILD_NUMBER'
-          sh 'curl localhost | grep FireFox'
+          }
+      }
+      
+        stage('Test Deployment') {
+          steps {
+            sh 'curl localhost | grep "Internet Explorer 9"'
+            sh 'curl localhost | grep "FireFox 25"'
+            sh 'curl localhost | grep "Google Chrome 31"'
         }
       }
-
     }
 
     post {
