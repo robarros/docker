@@ -18,7 +18,7 @@ pipeline {
           
       }
 
-      stage('Test Unit Contauner') {
+      stage('Test Unit Container') {
         steps {
           sh 'docker inspect 10.0.0.111:5000/web01:$BUILD_NUMBER'
           sh 'docker inspect 10.0.0.111:5000/web01:latest'
