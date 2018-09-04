@@ -1,0 +1,45 @@
+pipeline {
+    agent { label { label "jenkins-slave"} }
+    stages {
+      stage('Code') {
+        steps {
+          sh 'hostname'
+          git 'https://github.com/robarros/docker.git'
+          sh 'ls -lha'
+          }
+      }
+        
+      stage('Build') {
+        steps {
+          sh 'scripts/build.sh'
+          }
+      }
+      
+      stage('Test Unit Container') {
+        steps {
+          sh 'scripts/test_unit_container.sh'
+          }
+      }
+
+      stage('Deploy Prod') {
+        steps {
+          sh 'scripts/deploy_prod.sh'
+          }
+      }
+      
+      stage('Test Deployment') {
+        steps {
+          sh 'curl localhost | grep "Internet Explorer 9"'
+          sh 'curl localhost | grep "FireFox 25"'
+          sh 'curl localhost | grep "Google Chrome 31"'
+        }
+      }
+
+    }
+    post {
+      always {
+        deleteDir() /* clean up our workspace */
+        }
+      }
+    
+}
