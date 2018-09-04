@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 git clone https://github.com/robarros/docker.git
 cd docker
 export tags=`git describe --abbrev=0 --tags`
