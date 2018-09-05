@@ -9,5 +9,4 @@ RUN cd /tmp && curl -O https://www.html5webtemplates.co.uk/downloads/black_white
 
 EXPOSE 80
 
-HEALTHCHECK --interval=5s --timeout=2s --retries=12 \
-  CMD curl --silent --fail localhost:80 || exit 1
+HEALTHCHECK --interval=5s --timeout=2s --retries=12 CMD curl --silent --fail localhost:80 || exit 1
